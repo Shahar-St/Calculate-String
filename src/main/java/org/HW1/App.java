@@ -8,15 +8,10 @@ public class App {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
-        while(true)
-        {
-
-
-            System.out.println("Enter an Expression:");
-            String exp = scanner.nextLine();
-            DecimalFormat numberFormat = new DecimalFormat("#.00000");
-            System.out.println("The value of expression " + exp + " is: " + numberFormat.format(calculate(exp)));
-        }
+        System.out.println("Enter an Expression:");
+        String exp = scanner.nextLine();
+        DecimalFormat numberFormat = new DecimalFormat("#.00000");
+        System.out.println("The value of expression " + exp + " is: " + numberFormat.format(calculate(exp)));
     }
 
     static Double calculate(String exp) {
