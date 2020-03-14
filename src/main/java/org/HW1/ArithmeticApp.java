@@ -18,6 +18,7 @@ public class ArithmeticApp {
 
     static Double calculate(String exp) {
 
+        exp = exp.replace(" ", "");
         // parenthesis case
         int ind = exp.indexOf(")");
         if (ind != -1)
@@ -31,22 +32,15 @@ public class ArithmeticApp {
         }
 
         ind = exp.indexOf("+");
-        if (ind != -1)
-            return calculate(exp.substring(0, ind).trim()) + calculate(exp.substring(ind + 1).trim());
+        if (ind != -1)  /////
+            return calculate(exp.substring(0, ind)) + calculate(exp.substring(ind + 1));
 
         // - case: we only want to execute cases of num1 - num2 (not -"exp" or num1 *-num2)
         for (int i = 1; i < exp.length(); i = Math.max(i + 1, ind))
         {
             ind = exp.indexOf("-", i);
-            if (ind != -1)
-            {
-                int j = ind - 1;
-                while (exp.charAt(j) == ' ')
-                    j--;
-
-                if (exp.charAt(j) != '*' && exp.charAt(j) != '/')
-                    return calculate(exp.substring(0, ind)) - calculate(exp.substring(ind + 1));
-            }
+            if (ind != -1 && exp.charAt(i - 1) != '*' && exp.charAt(i - 1) != '/')
+                return calculate(exp.substring(0, ind)) - calculate(exp.substring(ind + 1));
         }
         // case of -num. (by the program structure and the if statement There won't be any other operators in the string)
         ind = exp.indexOf("-");
@@ -55,11 +49,11 @@ public class ArithmeticApp {
 
         ind = exp.indexOf("*");
         if (ind != -1)
-            return calculate(exp.substring(0, ind).trim()) * calculate(exp.substring(ind + 1).trim());
+            return calculate(exp.substring(0, ind)) * calculate(exp.substring(ind + 1));
 
         ind = exp.indexOf("/");
         if (ind != -1)
-            return calculate(exp.substring(0, ind).trim()) / calculate(exp.substring(ind + 1).trim());
+            return calculate(exp.substring(0, ind)) / calculate(exp.substring(ind + 1));
 
         return Double.parseDouble(exp);
     }
