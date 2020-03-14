@@ -1,5 +1,7 @@
 package org.HW1;
 
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.Scanner;
 
 public class ArithmeticApp {
@@ -9,7 +11,9 @@ public class ArithmeticApp {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter an Expression:");     // The program assumes valid input
         String exp = scanner.nextLine();
-        System.out.format("The value of expression " + exp + " is: %.5f\n", calculate(exp));
+        DecimalFormat numberFormat = new DecimalFormat("#.00000");
+        numberFormat.setRoundingMode(RoundingMode.DOWN);
+        System.out.println("The value of expression " + exp + " is: " + numberFormat.format(calculate(exp)));
     }
 
     static Double calculate(String exp) {
