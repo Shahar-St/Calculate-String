@@ -18,7 +18,7 @@ public class ArithmeticApp {
 
     static Double calculate(String exp) {
 
-        exp = exp.replace(" ", "");
+        exp = exp.replace(" ", ""); // get rid of all the spaces in the string
         // parenthesis case
         int ind = exp.indexOf(")");
         if (ind != -1)
@@ -32,7 +32,7 @@ public class ArithmeticApp {
         }
 
         ind = exp.indexOf("+");
-        if (ind != -1)  /////
+        if (ind != -1)
             return calculate(exp.substring(0, ind)) + calculate(exp.substring(ind + 1));
 
         // - case: we only want to execute cases of num1 - num2 (not -"exp" or num1 *-num2)
