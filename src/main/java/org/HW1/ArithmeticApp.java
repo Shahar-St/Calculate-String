@@ -11,7 +11,7 @@ public class ArithmeticApp {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter an Expression:");     // The program assumes valid input
         String exp = scanner.nextLine();
-        DecimalFormat numberFormat = new DecimalFormat("#.00000");
+        DecimalFormat numberFormat = new DecimalFormat("#0.00000");
         numberFormat.setRoundingMode(RoundingMode.DOWN);
         System.out.println("The value of expression " + exp + " is: " + numberFormat.format(calculate(exp)));
     }
@@ -39,7 +39,7 @@ public class ArithmeticApp {
         for (int i = 1; i < exp.length(); i = Math.max(i + 1, ind))
         {
             ind = exp.indexOf("-", i);
-            if (ind != -1 && exp.charAt(i - 1) != '*' && exp.charAt(i - 1) != '/')
+            if (ind != -1 && exp.charAt(ind - 1) != '*' && exp.charAt(ind - 1) != '/')
                 return calculate(exp.substring(0, ind)) - calculate(exp.substring(ind + 1));
         }
         // case of -num. (by the program structure and the if statement There won't be any other operators in the string)
