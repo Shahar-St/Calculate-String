@@ -10,7 +10,7 @@ public class ArithmeticApp {
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter an Expression:");     // The program assumes valid input
-        String exp = scanner.nextLine();
+        String exp = scanner.nextLine().replace(" ", "");   // get rid of all spaces in the string
         DecimalFormat numberFormat = new DecimalFormat("#0.00000");
         numberFormat.setRoundingMode(RoundingMode.DOWN);
         System.out.println("The value of expression " + exp + " is: " + numberFormat.format(calculate(exp)));
@@ -18,7 +18,6 @@ public class ArithmeticApp {
 
     static Double calculate(String exp) {
 
-        exp = exp.replace(" ", ""); // get rid of all the spaces in the string
         // parenthesis case
         int ind = exp.indexOf(")");
         if (ind != -1)
