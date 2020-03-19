@@ -9,9 +9,9 @@ public class ArithmeticApp {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter an Expression:");     // The program assumes valid input
+        System.out.println("Please enter an Expression:");     // The program assumes valid input
         String exp = scanner.nextLine().replace(" ", "");   // get rid of all spaces in the string
-        DecimalFormat numberFormat = new DecimalFormat("#0.00000");
+        DecimalFormat numberFormat = new DecimalFormat("0.00000");
         numberFormat.setRoundingMode(RoundingMode.DOWN);
         System.out.println("The value of expression " + exp + " is: " + numberFormat.format(calculate(exp)));
     }
