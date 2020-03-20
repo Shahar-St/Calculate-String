@@ -9,7 +9,7 @@ public class ArithmeticApp {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Please enter an Expression:");     // The program assumes valid input
+        System.out.println("Please enter expression:");     // The program assumes valid input
         String exp = scanner.nextLine().replace(" ", "");   // get rid of all spaces in the string
         DecimalFormat numberFormat = new DecimalFormat("0.00000");
         numberFormat.setRoundingMode(RoundingMode.DOWN);
