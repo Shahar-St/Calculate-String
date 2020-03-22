@@ -9,14 +9,14 @@ public class ArithmeticApp {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Please enter expression:");     // The program assumes valid input
+        System.out.println("Please enter an expression:");     // The program assumes valid input
         String exp = scanner.nextLine().replace(" ", "");   // get rid of all spaces in the string
         DecimalFormat numberFormat = new DecimalFormat("0.00000");
         numberFormat.setRoundingMode(RoundingMode.DOWN);
         System.out.println("The value of expression " + exp + " is: " + numberFormat.format(calculate(exp)));
     }
 
-    static Double calculate(String exp) {
+    public static Double calculate(String exp) {
 
         // parenthesis case
         int ind = exp.indexOf(")");
@@ -50,7 +50,7 @@ public class ArithmeticApp {
         if (ind != -1)
             return calculate(exp.substring(0, ind)) * calculate(exp.substring(ind + 1));
 
-        ind = exp.indexOf("/");
+        ind = exp.lastIndexOf("/");
         if (ind != -1)
             return calculate(exp.substring(0, ind)) / calculate(exp.substring(ind + 1));
 
